@@ -45,11 +45,20 @@ func main (){
 	sort.Sort(sort.IntSlice(list2))
 
 	sum := 0
-	for i := 0; i< len(list1); i++{
+	simSum := 0
+	for i := 0; i < len(list1); i++{
 		dif := int(math.Abs(float64(list1[i] - list2[i])))
 		sum += dif
-		fmt.Println("l1 " + fmt.Sprint(list1[i]) + " l2 " + fmt.Sprint(list2[i]) + " dif " + fmt.Sprint(dif) + " sum " + fmt.Sprint(sum))
+
+		amountOfL1 := 0
+		for j := 0; j < len(list2); j++{
+			if list1[i] == list2[j]{
+				amountOfL1++
+			}
+		}
+		simSum += list1[i] * amountOfL1
+		fmt.Println("l1 " + fmt.Sprint(list1[i]) + " l2 " + fmt.Sprint(list2[i]) + " dif " + fmt.Sprint(dif) + " sum " + fmt.Sprint(sum) + " simSum "+ fmt.Sprint(simSum))
 	}
-	fmt.Println("sum: " + fmt.Sprint(sum))
+	fmt.Println("sum: " + fmt.Sprint(sum) + " simSum: " + fmt.Sprint(simSum))
 }
 
